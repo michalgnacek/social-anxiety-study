@@ -1,0 +1,6 @@
+2022-11-17 22:31:10,470 ERROR [default] Start: ThreadPool::Start num_threads=6
+2022-11-17 22:31:10,470 INFO  [default] initializeAndroid_Prepare: PlatformSDKInitialize:appPackageName=,appVersionCode=0,appVersionName=,matrixVersionCode=0,matrixVersionName=,appId=3a3910d75592d40e70ddb501395ef677,loaderVersion=1
+2022-11-17 22:31:10,471 INFO  [default] RegisterModule: moduleManager RegisterModule 'user'
+2022-11-17 22:31:10,471 INFO  [default] RegisterModule: moduleManager RegisterModule 'social'
+2022-11-17 22:31:10,471 INFO  [default] RegisterModule: moduleManager RegisterModule 'game'
+2022-11-17 22:31:10,471 INFO  [default] RegisterModule: moduleManager RegisterModule 'iap'

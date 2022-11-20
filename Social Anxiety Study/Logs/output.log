@@ -1,0 +1,25 @@
+2022-11-17 22:31:10,471 WARN  [default] -----------------------------------------------------------------
+2022-11-17 22:31:10,472 WARN  [default] parse config successful
+2022-11-17 22:31:10,472 WARN  [default] language:zh
+2022-11-17 22:31:10,472 WARN  [default] host:https://platform-cn.picovr.com
+2022-11-17 22:31:10,472 WARN  [default] matrixAppId:305817
+2022-11-17 22:31:10,472 WARN  [default] oauthHost:https://matrix-cn.picovr.com
+2022-11-17 22:31:10,472 WARN  [default] accessToken:
+2022-11-17 22:31:10,472 WARN  [default] packageName:com.DefaultCompany.picotest
+2022-11-17 22:31:10,472 WARN  [default] packageVersionCode:1
+2022-11-17 22:31:10,472 WARN  [default] packageVersionName:0.1
+2022-11-17 22:31:10,472 WARN  [default] -----------------------------------------------------------------
+2022-11-17 22:31:10,472 WARN  [default] initializeAndroid_HeavyPart: logPath=E:\test\pico test\Logs
+2022-11-17 22:31:10,473 INFO  [default] ppfModule_SendHttpRequestWithCallback: ppfModule_SendHttpRequestWithCallback json={"modules":["all"]}
+2022-11-17 22:31:12,782 INFO  [default] operator(): global config response statusCode=200, body={"code":0,"em":"The request succeeded.","et":"trace id: 202211180631120101501651460554E747, message: The request succeeded.","trace_id":"202211180631120101501651460554E747","data":{"configurations":{"game":"{\"code\":-98,\"msg\":\"app not found\",\"conf\":{\"address\":\"\",\"status\":0,\"available\":[]}}","rtc":"{\"rtc_app_id\":\"\",\"log_url\":\"\",\"is_boe\":false,\"access_hosts\":[],\"config_hosts\":[]}"}}}, isSuccess=1
+2022-11-17 22:31:12,782 INFO  [default] Init: moduleManager Init
+2022-11-17 22:31:12,782 INFO  [default] ppfModule_SendHttpRequestWithCallback: ppfModule_SendHttpRequestWithCallback json={"access_token":"","open_id":"1"}
+2022-11-17 22:31:13,783 INFO  [default] OnGameLog: [PPF_GAME_BASIC][INFO](ppf_platform_game.cc:1031)(ppf_Game_SetEventDelegate) set event delegate: 00007ffce30f3e50
+2022-11-17 22:31:13,783 INFO  [default] [PPF_GAME_BASIC][INFO](ppf_platform_game.cc:1031)(ppf_Game_SetEventDelegate) set event delegate: 00007ffce30f3e50
+2022-11-17 22:31:13,783 ERROR [default] initializeAndroid_HeavyPart: >>> InitializeAndroid success
+2022-11-17 22:31:13,783 ERROR [default] sendMessage_InitializeAndroidAsynchronous: Send InitializeAndroidAsynchronous Message, result=0
+2022-11-17 22:31:13,783 INFO  [default] ppfMessageQueue_RecvMessage: ppfMessageQueue_RecvMessage: received a message 1
+2022-11-17 22:31:14,796 INFO  [default] operator(): response statusCode=200, body={"data":{"captcha":"","desc_url":"","description":"缺少参数","error_code":10005},"message":"error"}, isSuccess=1
+2022-11-17 22:31:14,796 INFO  [default] operator(): errorCode != 0
+2022-11-17 22:31:58,498 ERROR [default] operator(): start quit thread pool
+2022-11-17 22:31:58,498 ERROR [default] operator(): end quit thread pool
