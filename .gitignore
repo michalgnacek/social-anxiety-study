@@ -10,9 +10,6 @@ Social Anxiety Study/[Bb]uilds/
 Social Anxiety Study/[Ll]ogs/
 Social Anxiety Study/[Mm]emoryCaptures/
 
-#log files
-*.log
-
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
