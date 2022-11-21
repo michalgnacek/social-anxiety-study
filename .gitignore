@@ -13,6 +13,9 @@ Social Anxiety Study/[Mm]emoryCaptures/
 # Pico creates streaming .log files
 *.log
 
+# Large mp4 videos from Remote Video Import
+Social Anxiety Study/Assets/RemoteVideoStudy/videos/
+
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
 
