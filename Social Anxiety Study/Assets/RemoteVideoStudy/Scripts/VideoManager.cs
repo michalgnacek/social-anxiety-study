@@ -41,10 +41,26 @@ public class VideoManager : MonoBehaviour
     public GameObject relaxationVideoText;
     public GameObject relaxationVideoRatingReminderText;
 
+    public GameObject welcomeGameObject;
+    public GameObject welcomeText;
+
+    // Controller variables
+    List<UnityEngine.XR.InputDevice> heldControllers;
+    UnityEngine.XR.InputDeviceCharacteristics desiredCharacteristics;
+    public UnityEngine.XR.InputDevice desiredController;
+    bool triggerValue;
+
     // Start is called before the first frame update
     void Start()
     {
+        heldControllers = new List<UnityEngine.XR.InputDevice>();
+        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, heldControllers);
+        desiredController = heldControllers[0];
+
         EmteqManager.SetDataPoint("Cinema scene started");
+        StartCoroutine(ShowWelcomeScreen());
+
 
         if (debugStageCounter != 0)
         {
@@ -57,21 +73,33 @@ public class VideoManager : MonoBehaviour
         }
     }
 
+    // every 2 seconds perform the print()
+    private IEnumerator ShowWelcomeScreen()
+    {
+        yield return new WaitForSeconds(3);
+        welcomeGameObject.SetActive(true);
+        welcomeText.SetActive(true);
+    }
     // Update is called once per frame
     void Update()
     {
         if (canUserProgressToNextStageWithTriggerButton)
         {
-            if (Input.GetKeyDown("space") || Controller.UPvr_GetKeyDown(0, Pvr_KeyCode.TRIGGER))
+            if (Input.GetKeyDown("space") || desiredController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
             {
                 VideoSceneNextStage();
+                if (welcomeGameObject.activeSelf)
+                {
+                    welcomeGameObject.SetActive(false);
+                    welcomeText.SetActive(false);
+                }
             }
         }
 
-        if (Controller.UPvr_GetKeyDown(0, Pvr_KeyCode.APP) || Input.GetKeyDown(KeyCode.Q))
-        {
-            LoadMenu();
-        }
+        //if (controller.upvr_getkeydown(0, pvr_keycode.app) || input.getkeydown(keycode.q))
+        //{
+        //    loadmenu();
+        //}
     }
 
     public void LoadMenu()

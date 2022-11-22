@@ -6,6 +6,8 @@ public class DisplayValenceArousalInstructions : MonoBehaviour
 {
 
     public GameObject[] NeutralNegativePositive;
+    public MeshRenderer cylinderHighlight;
+    public Material cylinderHighlight2;
     int counter = 1;
     int positiveOrNegative = 0;
 
@@ -38,6 +40,7 @@ public class DisplayValenceArousalInstructions : MonoBehaviour
             NeutralNegativePositive[0].SetActive(true);
             NeutralNegativePositive[1].SetActive(false);
             NeutralNegativePositive[2].SetActive(false);
+            cylinderHighlight.GetComponent<Renderer>().material.SetColor("_Color", Color.blue);
 
         } else
         {
@@ -47,12 +50,14 @@ public class DisplayValenceArousalInstructions : MonoBehaviour
                 NeutralNegativePositive[0].SetActive(false);
                 NeutralNegativePositive[1].SetActive(true);
                 positiveOrNegative = 1;
+                cylinderHighlight.GetComponent<Renderer>().material.SetColor("_Color", Color.red);
             } else
             {
                 //Positive
                 NeutralNegativePositive[0].SetActive(false);
                 NeutralNegativePositive[2].SetActive(true);
                 positiveOrNegative = 0;
+                cylinderHighlight.GetComponent<Renderer>().material.SetColor("_Color", Color.green);
             }
         }
         counter++;
