@@ -7,7 +7,6 @@ public class DisplayValenceArousalInstructions : MonoBehaviour
 
     public GameObject[] NeutralNegativePositive;
     public MeshRenderer cylinderHighlight;
-    public Material cylinderHighlight2;
     int counter = 1;
     int positiveOrNegative = 0;
 

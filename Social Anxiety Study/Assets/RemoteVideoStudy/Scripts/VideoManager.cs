@@ -11,7 +11,7 @@ using EmteqLabs.Video;
 public class VideoManager : MonoBehaviour
 {
 
-    bool canUserProgressToNextStageWithTriggerButton;
+    bool canUserProgressToNextStageWithTriggerButton = false;
     private int stageCounter = 0;
     public GameObject[] stages;
     public bool debugNextStageOnStart;
@@ -66,7 +66,6 @@ public class VideoManager : MonoBehaviour
         {
             stageCounter = debugStageCounter;
         }
-        canUserProgressToNextStageWithTriggerButton = true;
         if (debugNextStageOnStart)
         {
             VideoSceneNextStage();
@@ -79,6 +78,7 @@ public class VideoManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         welcomeGameObject.SetActive(true);
         welcomeText.SetActive(true);
+        SetCanUserProgressToNextStageWithTriggerButton(true);
     }
     // Update is called once per frame
     void Update()
