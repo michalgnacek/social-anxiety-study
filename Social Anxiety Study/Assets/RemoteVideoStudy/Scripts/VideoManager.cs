@@ -50,6 +50,8 @@ public class VideoManager : MonoBehaviour
     public UnityEngine.XR.InputDevice desiredController;
     bool triggerValue;
 
+    private bool welcomeScreenShown = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -79,6 +81,7 @@ public class VideoManager : MonoBehaviour
         welcomeGameObject.SetActive(true);
         welcomeText.SetActive(true);
         SetCanUserProgressToNextStageWithTriggerButton(true);
+        welcomeScreenShown = true;
     }
     // Update is called once per frame
     void Update()
@@ -87,6 +90,7 @@ public class VideoManager : MonoBehaviour
         {
             if (Input.GetKeyDown("space") || desiredController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
             {
+                canUserProgressToNextStageWithTriggerButton = false;
                 VideoSceneNextStage();
                 if (welcomeGameObject.activeSelf)
                 {
@@ -94,6 +98,16 @@ public class VideoManager : MonoBehaviour
                     welcomeText.SetActive(false);
                 }
             }
+        }
+
+        if(desiredController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && !triggerValue && !canUserProgressToNextStageWithTriggerButton && welcomeScreenShown)
+        {
+            canUserProgressToNextStageWithTriggerButton = true;
+        }
+
+        if(Input.GetKeyUp("space") && !canUserProgressToNextStageWithTriggerButton && welcomeScreenShown)
+        {
+            canUserProgressToNextStageWithTriggerButton = true;
         }
 
         //if (controller.upvr_getkeydown(0, pvr_keycode.app) || input.getkeydown(keycode.q))
