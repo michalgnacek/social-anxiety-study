@@ -1,54 +1,60 @@
-﻿//using EmteqLabs;
-//using Pvr_UnitySDKAPI;
-//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using EmteqLabs;
+using UnityEngine;
+using UnityEngine.Video;
 
-//public class EndOfTraining : MonoBehaviour
-//{
+public class EndOfTraining : MonoBehaviour
+{
 
-//    public VideoManager videoManagerScript;
-//    public GameObject videoPlayerGameObject;
-//    public GameObject endOfTrainingGameObject;
-//    public AffectScale affectScaleScript;
-//    public GameObject trainingRatingText;
+    public VideoManager videoManagerScript;
+    public GameObject videoPlayerGameObject;
+    public GameObject endOfTrainingGameObject;
+    public AffectScale affectScaleScript;
+    public GameObject trainingRatingText;
 
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-        
-//    }
+    [SerializeField] private VideoPlayer _videoPlayer;
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-//        if (Controller.UPvr_GetKeyDown(0, Pvr_KeyCode.TRIGGER) || Input.GetKeyDown("space"))
-//        {
-//            TrainingFinished();
-//        }
+    // Controller variables
+    bool triggerValue;
+    bool thumbstickPress;
 
-//        if (Controller.UPvr_GetKeyDown(0, Pvr_KeyCode.TOUCHPAD) || Input.GetKeyDown(KeyCode.R))
-//        {
-//            RepeatTraining();
-//        }
-//    }
 
-//    public void TrainingFinished()
-//    {
-//        EmteqManager.SetDataPoint("Video rating training finished");
-//        affectScaleScript.SetTrainingFinished(true);
-//        trainingRatingText.SetActive(false);
-//        videoPlayerGameObject.SetActive(true);
-//        videoManagerScript.VideoSceneNextStage();
+    // Start is called before the first frame update
+    void Start()
+    {
+        _videoPlayer.Pause();
+    }
 
-//    }
+    // Update is called once per frame
+    void Update()
+    {
+        if (Input.GetKeyDown("space") || videoManagerScript.desiredController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && triggerValue)
+        {
+            TrainingFinished();
+        }
 
-//    public void RepeatTraining()
-//    {
-//        EmteqManager.SetDataPoint("Video rating training repeated");
-//        endOfTrainingGameObject.SetActive(false);
-//        videoPlayerGameObject.SetActive(true);
-//        videoManagerScript.RepeatTraining();
 
-//    }
-//}
+        if (Input.GetKeyDown(KeyCode.R) || videoManagerScript.desiredController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.primary2DAxisClick, out thumbstickPress) && thumbstickPress)
+        {
+            RepeatTraining();
+        }
+    }
+
+    public void TrainingFinished()
+    {
+        EmteqManager.SetDataPoint("Video rating training finished");
+        affectScaleScript.SetTrainingFinished(true);
+        trainingRatingText.SetActive(false);
+        videoPlayerGameObject.SetActive(true);
+        videoManagerScript.VideoSceneNextStage();
+
+    }
+
+    public void RepeatTraining()
+    {
+        EmteqManager.SetDataPoint("Video rating training repeated");
+        endOfTrainingGameObject.SetActive(false);
+        videoPlayerGameObject.SetActive(true);
+        videoManagerScript.RepeatTraining();
+
+    }
+}

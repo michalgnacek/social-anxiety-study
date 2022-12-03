@@ -17,25 +17,36 @@ public class VideoManager : MonoBehaviour
     public bool debugNextStageOnStart;
     public int debugStageCounter;
     public bool debugUseTestVideos;
-    private int restPeriodBetweenVideosInSeconds = 120;
+    private int restPeriodBetweenVideosInSeconds = 20;
     //private int restPeriodBetweenVideosInSeconds = 5;
 
-    public GameObject videoPlayerObject;
-    [SerializeField] private SrtVideoPlayer _videoPlayer;
+    [SerializeField] private VideoPlayer _videoPlayer;
     private List<VideoClip> _nextVideoClips = new List<VideoClip>();
 
-    [SerializeField] List<VideoClip> _neutralVideoClipsList = new List<VideoClip>();
-    [SerializeField] List<VideoClip> _negativeVideoClipsList = new List<VideoClip>();
-    [SerializeField] List<VideoClip> _positiveVideoClipsList = new List<VideoClip>();
+    //[SerializeField] List<VideoClip> _neutralVideoClipsList = new List<VideoClip>();
+    //[SerializeField] List<VideoClip> _negativeVideoClipsList = new List<VideoClip>();
+    //[SerializeField] List<VideoClip> _positiveVideoClipsList = new List<VideoClip>();
     [SerializeField] List<VideoClip> _restVideoClip = new List<VideoClip>();
+
+    [SerializeField] List<VideoClip> _nonSocialNeutralVideoClipsList = new List<VideoClip>();
+    [SerializeField] List<VideoClip> _nonSocialPositiveVideoClipsList = new List<VideoClip>();
+    [SerializeField] List<VideoClip> _nonSocialNegativeVideoClipsList = new List<VideoClip>();
+
+    [SerializeField] List<VideoClip> _socialBUNeutralVideoClipsList = new List<VideoClip>();
+    [SerializeField] List<VideoClip> _socialBUPositiveVideoClipsList = new List<VideoClip>();
+    [SerializeField] List<VideoClip> _socialBUNegativeVideoClipsList = new List<VideoClip>();
+
+    [SerializeField] List<VideoClip> _socialNeutralVideoClipsList = new List<VideoClip>();
+    [SerializeField] List<VideoClip> _socialPositiveVideoClipsList = new List<VideoClip>();
+    [SerializeField] List<VideoClip> _socialNegativeVideoClipsList = new List<VideoClip>();
 
 
     [SerializeField] List<VideoClip> _testneutralVideoClipsList = new List<VideoClip>();
     [SerializeField] List<VideoClip> _testnegativeVideoClipsList = new List<VideoClip>();
     [SerializeField] List<VideoClip> _testpositiveVideoClipsList = new List<VideoClip>();
 
-    private int[] originalCategorySequenceArray = new int[] { 1, 2, 3 };
-    private int[] categorySequenceArray = new int[3];
+    private int[] originalCategorySequenceArray = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+    private int[] categorySequenceArray = new int[9];
     int categoryCounter = 0;
 
     public GameObject relaxationVideoText;
@@ -159,27 +170,44 @@ public class VideoManager : MonoBehaviour
 
     public void SetupStudyVideos()
     {
-        //TODO videoPlayer = videoPlayerObject.GetComponent<Emteq.Widgets.VideoPlayer.VideoPlayer>();
         categorySequenceArray = originalCategorySequenceArray.Shuffle().ToArray();
+
         EmteqManager.SetDataPoint("Category sequence array numbers: " + categorySequenceArray[0] + ", " + categorySequenceArray[1] + ", " + categorySequenceArray[2]);
         EmteqManager.SetDataPoint("Category sequence: " + CategoryNumberToName(categorySequenceArray[0]) + "," +
             " " + CategoryNumberToName(categorySequenceArray[1]) + ", " +
             CategoryNumberToName(categorySequenceArray[2]));
     }
-
     private String CategoryNumberToName(int categoryNumber)
     {
         String categoryName;
         switch (categoryNumber)
         {
             case 1:
-                categoryName = "Neutral";
+                categoryName = "Non-Social Neutral";
                 break;
             case 2:
-                categoryName = "Negative";
+                categoryName = "Non-Social Positive";
                 break;
             case 3:
-                categoryName = "Positive";
+                categoryName = "Non-Social Negative";
+                break;
+            case 4:
+                categoryName = "SocialBU Neutral";
+                break;
+            case 5:
+                categoryName = "SocialBU Positive";
+                break;
+            case 6:
+                categoryName = "SocialBU Negative";
+                break;
+            case 7:
+                categoryName = "Social Neutral";
+                break;
+            case 8:
+                categoryName = "Social Positive";
+                break;
+            case 9:
+                categoryName = "Social Negative";
                 break;
             default:
                 categoryName = "Invalid Category";
@@ -194,7 +222,7 @@ public class VideoManager : MonoBehaviour
         {
             SetCanUserProgressToNextStageWithTriggerButton(false);
         }
-        if (categoryCounter < 3)
+        if (categoryCounter < 9)
         {
             int categoryNumber = categorySequenceArray[categoryCounter];
 
@@ -218,13 +246,31 @@ public class VideoManager : MonoBehaviour
                 switch (categoryNumber)
                 {
                     case 1:
-                        _nextVideoClips = _neutralVideoClipsList;
+                        _nextVideoClips = _nonSocialNeutralVideoClipsList;
                         break;
                     case 2:
-                        _nextVideoClips = _negativeVideoClipsList;
+                        _nextVideoClips = _nonSocialPositiveVideoClipsList;
                         break;
                     case 3:
-                        _nextVideoClips = _positiveVideoClipsList;
+                        _nextVideoClips = _nonSocialNegativeVideoClipsList;
+                        break;
+                    case 4:
+                        _nextVideoClips = _socialBUNeutralVideoClipsList;
+                        break;
+                    case 5:
+                        _nextVideoClips = _socialBUPositiveVideoClipsList;
+                        break;
+                    case 6:
+                        _nextVideoClips = _socialBUNegativeVideoClipsList;
+                        break;
+                    case 7:
+                        _nextVideoClips = _socialNeutralVideoClipsList;
+                        break;
+                    case 8:
+                        _nextVideoClips = _socialPositiveVideoClipsList;
+                        break;
+                    case 9:
+                        _nextVideoClips = _socialNegativeVideoClipsList;
                         break;
                 }
             }
@@ -232,9 +278,9 @@ public class VideoManager : MonoBehaviour
 
 
             //TODO videoPlayer.SetVideoClips(_nextVideoClips.ToArray());
-            //Debug.Log("Playing category number: " + categoryNumber + " Category name: " + CategoryNumberToName(categoryNumber));
+            Debug.Log("Playing category number: " + categoryNumber + " Category name: " + CategoryNumberToName(categoryNumber));
             EmteqManager.SetDataPoint("Playing category number: " + categoryNumber + " Category name: " + CategoryNumberToName(categoryNumber));
-            PlayNextStudyVideoInCategory();
+            PlayNextStudyVideoInCategory2();
             categoryCounter++;
         }
         else
@@ -243,6 +289,17 @@ public class VideoManager : MonoBehaviour
             VideoSceneNextStage();
             SetCanUserProgressToNextStageWithTriggerButton(true);
         }
+    }
+
+    public void PlayNextStudyVideoInCategory2()
+    {
+        //Random overload for int max value is not included
+        int rnd = UnityEngine.Random.Range(0, _nextVideoClips.Count);
+        _videoPlayer.clip = _nextVideoClips[rnd];
+        _videoPlayer.Play();
+        Debug.Log("Playing video number: " + _nextVideoClips[rnd].name);
+        EmteqManager.SetDataPoint("Playing video number: " + _nextVideoClips[rnd].name);
+        StartCoroutine(VideoPlaying(rnd));
     }
 
     public void PlayNextStudyVideoInCategory()
@@ -257,25 +314,15 @@ public class VideoManager : MonoBehaviour
 
     public void PlayRestVideo()
     {
-        //StartCoroutine(Delay(1));
-        ////Debug.Log("Playing rest video");
-        //EmteqManager.StopRecordingData();
-        //StartCoroutine(Delay(1));
-        //EmteqManager.StartRecordingData();
-        //StartCoroutine(Delay(1));
-        //EmteqManager.SetDataPoint("Playing rest video");
-        //videoPlayer.SetVideoClips(_restVideoClip.ToArray());
-        //videoPlayer.Play(0);
-        //relaxationVideoText.SetActive(true);
-        //StartCoroutine(RestVideoPlaying());
         StartCoroutine(PlayRestVideoWithDelay());
     }
 
     IEnumerator VideoPlaying(int videoNumberInList)
     {
-        yield return new WaitForSeconds(30);
-        //Debug.Log("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
+        yield return new WaitForSeconds(5);
+        Debug.Log("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
         EmteqManager.SetDataPoint("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
+        yield return new WaitForSeconds(0.2f);
         if (_nextVideoClips.Count > 0)
         {
             _nextVideoClips.RemoveAt(videoNumberInList);
@@ -284,7 +331,7 @@ public class VideoManager : MonoBehaviour
         if (_nextVideoClips.Count != 0)
         {
             //TODO videoPlayer.SetVideoClips(_nextVideoClips.ToArray());
-            PlayNextStudyVideoInCategory();
+            PlayNextStudyVideoInCategory2();
         }
         else
         {
@@ -304,6 +351,7 @@ public class VideoManager : MonoBehaviour
         Debug.Log("Finished playing rest video");
         EmteqManager.SetDataPoint("Finished playing rest video");
         relaxationVideoText.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
         PlayNextStudyVidoesCategory();
     }
 
@@ -314,14 +362,14 @@ public class VideoManager : MonoBehaviour
 
     IEnumerator PlayRestVideoWithDelay()
     {
-        yield return new WaitForSeconds(1);
-        EmteqManager.StopRecordingData();
-        yield return new WaitForSeconds(3);
-        EmteqManager.StartRecordingData();
+        //yield return new WaitForSeconds(1);
+        //EmteqManager.StopRecordingData();
+        //yield return new WaitForSeconds(3);
+        //EmteqManager.StartRecordingData();
+        _videoPlayer.clip = _restVideoClip[0];
         yield return new WaitForSeconds(1);
         EmteqManager.SetDataPoint("Playing rest video");
-        //TODO videoPlayer.SetVideoClips(_restVideoClip.ToArray());
-        //TODO videoPlayer.Play(0);
+        _videoPlayer.Play();
         StartCoroutine(RestVideoPlaying());
         relaxationVideoText.SetActive(true);
     }

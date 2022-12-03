@@ -1,27 +1,27 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using UnityEngine;
 
-//public class VideoInstructions17 : MonoBehaviour
-//{
-//    public VideoManager videoManagerScript;
+public class VideoInstructions17 : MonoBehaviour
+{
+    public VideoManager videoManagerScript;
+    public GameObject videoPlayerGameObject;
+    // Start is called before the first frame update
+    void Start()
+    {
 
-//    // Start is called before the first frame update
-//    void Start()
-//    {
-        
-//    }
+    }
 
-//    // Update is called once per frame
-//    void Update()
-//    {
-        
-//    }
+    // Update is called once per frame
+    void Update()
+    {
 
-//    void OnEnable()
-//    {
-//        videoManagerScript.SetCanUserProgressToNextStageWithTriggerButton(false);
-//        //videoManagerScript.PlayNextStudyVidoesCategory();
-//        videoManagerScript.PlayRestVideo();
-//    }
-//}
+    }
+
+    void OnEnable()
+    {
+        videoManagerScript.SetCanUserProgressToNextStageWithTriggerButton(false);
+        videoManagerScript.PlayRestVideo();
+        videoPlayerGameObject.SetActive(true);
+        //videoManagerScript.PlayNextStudyVidoesCategory();
+
+    }
+}

@@ -6,13 +6,10 @@ using UnityEngine.SceneManagement;
 
 public class RatingsFinished : MonoBehaviour
 {
-    private ProgressManager progressManagerScript;
 
     // Start is called before the first frame update
     void Start()
     {
-        progressManagerScript = GameObject.FindGameObjectWithTag("ProgressManager").GetComponent<ProgressManager>();
-        progressManagerScript.isVideoSegmentFinished = true;
         StartCoroutine(RatingsFinishedExit());
     }
 
@@ -27,6 +24,6 @@ public class RatingsFinished : MonoBehaviour
         EmteqManager.SetDataPoint("Video ratings study: finished data recording");
         yield return new WaitForSeconds(5);
         EmteqManager.StopRecordingData();
-        SceneManager.LoadScene("Menu");
+        Application.Quit();
     }
 }
