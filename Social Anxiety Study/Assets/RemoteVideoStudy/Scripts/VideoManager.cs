@@ -7,6 +7,8 @@ using UnityEngine.Video;
 using System.Linq;
 using EmteqLabs;
 using EmteqLabs.Video;
+using EmteqLabs.Models;
+using UnityEngine.XR.Interaction.Toolkit;
 
 public class VideoManager : MonoBehaviour
 {
@@ -55,13 +57,32 @@ public class VideoManager : MonoBehaviour
     public GameObject welcomeGameObject;
     public GameObject welcomeText;
 
+    public GameObject calibrationGameObject;
+    [SerializeField] private CustomCalibration _customCalibration;
+
     // Controller variables
     List<UnityEngine.XR.InputDevice> heldControllers;
     UnityEngine.XR.InputDeviceCharacteristics desiredCharacteristics;
     public UnityEngine.XR.InputDevice desiredController;
     bool triggerValue;
+    public XRInteractorLineVisual leftXRInteractorLineVisual;
+    public XRInteractorLineVisual rightXRInteractorLineVisual;
 
     private bool welcomeScreenShown = false;
+    public bool skipCalibration;
+
+    private void Awake()
+    {
+        _customCalibration.OnExpressionCalibrationComplete += OnExpressionCalibrationComplete;
+    }
+
+    private void OnExpressionCalibrationComplete(EmgCalibrationData expressionCalibrationData)
+    {
+        calibrationGameObject.SetActive(false);
+        leftXRInteractorLineVisual.lineLength = 0f;
+        rightXRInteractorLineVisual.lineLength = 0f;
+        StartCoroutine(ShowWelcomeScreen());
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +93,13 @@ public class VideoManager : MonoBehaviour
         desiredController = heldControllers[0];
 
         EmteqManager.SetDataPoint("Cinema scene started");
-        StartCoroutine(ShowWelcomeScreen());
+        if (skipCalibration)
+        {
+            StartCoroutine(ShowWelcomeScreen());
+        } else
+        {
+            calibrationGameObject.SetActive(true);
+        }
 
 
         if (debugStageCounter != 0)

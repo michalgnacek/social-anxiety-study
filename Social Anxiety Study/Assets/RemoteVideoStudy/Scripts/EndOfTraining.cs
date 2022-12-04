@@ -53,6 +53,7 @@ public class EndOfTraining : MonoBehaviour
     {
         EmteqManager.SetDataPoint("Video rating training repeated");
         endOfTrainingGameObject.SetActive(false);
+        _videoPlayer.Pause();
         videoPlayerGameObject.SetActive(true);
         videoManagerScript.RepeatTraining();
 
