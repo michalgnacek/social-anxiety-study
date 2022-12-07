@@ -42,6 +42,7 @@ public class EndOfTraining : MonoBehaviour
     public void TrainingFinished()
     {
         EmteqManager.SetDataPoint("Video rating training finished");
+        _videoPlayer.Pause();
         affectScaleScript.SetTrainingFinished(true);
         trainingRatingText.SetActive(false);
         videoPlayerGameObject.SetActive(true);

@@ -447,6 +447,7 @@ GameObject:
   - component: {fileID: 73364395}
   - component: {fileID: 73364394}
   - component: {fileID: 73364399}
+  - component: {fileID: 73364400}
   m_Layer: 5
   m_Name: Instructions_16
   m_TagString: Untagged
@@ -584,6 +585,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2ea118f3b96b4d04888a736a67c79856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
+--- !u!114 &73364400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73364391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   videoManagerScript: {fileID: 1721912211}
@@ -972,6 +986,7 @@ GameObject:
   - component: {fileID: 133010219}
   - component: {fileID: 133010218}
   - component: {fileID: 133010223}
+  - component: {fileID: 133010224}
   m_Layer: 5
   m_Name: Instructions_4
   m_TagString: Untagged
@@ -1112,6 +1127,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   instructionsAnimationToEnable: {fileID: 600046141}
+--- !u!114 &133010224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 133010216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
 --- !u!1 &137785916
 GameObject:
   m_ObjectHideFlags: 0
@@ -7043,6 +7071,7 @@ GameObject:
   - component: {fileID: 810358956}
   - component: {fileID: 810358955}
   - component: {fileID: 810358954}
+  - component: {fileID: 810358960}
   m_Layer: 5
   m_Name: Instructions_5
   m_TagString: Untagged
@@ -7183,6 +7212,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &810358960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 810358952}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
 --- !u!1 &865274824
 GameObject:
   m_ObjectHideFlags: 0
@@ -13477,6 +13519,7 @@ GameObject:
   - component: {fileID: 1610104711}
   - component: {fileID: 1610104710}
   - component: {fileID: 1610104709}
+  - component: {fileID: 1610104715}
   m_Layer: 5
   m_Name: Instructions_6_affect_scale_feel
   m_TagString: Untagged
@@ -13604,6 +13647,19 @@ RectTransform:
   m_AnchoredPosition: {x: -0.04901123, y: 0.05}
   m_SizeDelta: {x: 1018, y: 496.4}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1610104715
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1610104708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
 --- !u!1 &1622967285
 GameObject:
   m_ObjectHideFlags: 0
@@ -14692,7 +14748,7 @@ MonoBehaviour:
   _customCalibration: {fileID: 409371038}
   leftXRInteractorLineVisual: {fileID: 1092107315}
   rightXRInteractorLineVisual: {fileID: 223507380}
-  skipCalibration: 1
+  skipCalibration: 0
 --- !u!4 &1721912212
 Transform:
   m_ObjectHideFlags: 0
@@ -15276,6 +15332,7 @@ GameObject:
   - component: {fileID: 1783746748}
   - component: {fileID: 1783746747}
   - component: {fileID: 1783746752}
+  - component: {fileID: 1783746753}
   m_Layer: 5
   m_Name: Instructions_7
   m_TagString: Untagged
@@ -15416,6 +15473,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _videoPlayer: {fileID: 933413566}
+--- !u!114 &1783746753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1783746745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
 --- !u!1 &1815738726
 GameObject:
   m_ObjectHideFlags: 0
@@ -17481,6 +17551,7 @@ GameObject:
   - component: {fileID: 2095452145}
   - component: {fileID: 2095452144}
   - component: {fileID: 2095452143}
+  - component: {fileID: 2095452148}
   m_Layer: 5
   m_Name: Instructions_1
   m_TagString: Untagged
@@ -17608,6 +17679,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &2095452148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2095452141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
 --- !u!1001 &2098525702
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17680,6 +17764,7 @@ GameObject:
   - component: {fileID: 2098699651}
   - component: {fileID: 2098699650}
   - component: {fileID: 2098699655}
+  - component: {fileID: 2098699656}
   m_Layer: 5
   m_Name: Instructions_6
   m_TagString: Untagged
@@ -17822,6 +17907,19 @@ MonoBehaviour:
   highLight: {fileID: 1652224751}
   affectScale: {fileID: 792621563}
   g2_controller: {fileID: 109801991}
+--- !u!114 &2098699656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098699647}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c772f6a03b1abbf4d987a2d337f52a71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  videoManagerScript: {fileID: 1721912211}
 --- !u!1 &2130836216
 GameObject:
   m_ObjectHideFlags: 0
