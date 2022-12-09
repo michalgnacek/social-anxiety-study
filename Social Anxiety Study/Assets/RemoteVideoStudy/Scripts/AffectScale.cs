@@ -64,7 +64,7 @@ public class AffectScale : MonoBehaviour
         heldControllers = new List<UnityEngine.XR.InputDevice>();
         //desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Controller;
         //desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.Left;
-        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Left | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Controller;
         UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, heldControllers);
         desiredController = heldControllers[0];
 

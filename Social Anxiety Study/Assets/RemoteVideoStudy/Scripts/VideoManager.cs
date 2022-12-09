@@ -51,6 +51,10 @@ public class VideoManager : MonoBehaviour
     private int[] categorySequenceArray = new int[9];
     int categoryCounter = 0;
 
+    private int[] neutralCategories = new int[] { 1, 4, 7 };
+    private int[] positiveCategories = new int[] { 2, 5, 8 };
+    private int[] negativeCategories = new int[] { 3, 6, 9 };
+
     public GameObject relaxationVideoText;
     public GameObject relaxationVideoRatingReminderText;
 
@@ -95,10 +99,10 @@ public class VideoManager : MonoBehaviour
         EmteqManager.SetDataPoint("Cinema scene started");
         if (skipCalibration)
         {
-            StartCoroutine(ShowWelcomeScreen());
+           // StartCoroutine(ShowWelcomeScreen());
         } else
         {
-            calibrationGameObject.SetActive(true);
+            //calibrationGameObject.SetActive(true);
         }
 
 
@@ -138,22 +142,6 @@ public class VideoManager : MonoBehaviour
                 }
             }
         }
-
-        if(desiredController.TryGetFeatureValue(UnityEngine.XR.CommonUsages.triggerButton, out triggerValue) && !triggerValue && !canUserProgressToNextStageWithTriggerButton && welcomeScreenShown)
-        {
-            //canUserProgressToNextStageWithTriggerButton = true;
-        }
-
-        if(Input.GetKeyUp("space") && !canUserProgressToNextStageWithTriggerButton && welcomeScreenShown)
-        {
-            //print("hello");
-          // canUserProgressToNextStageWithTriggerButton = true;
-        }
-
-        //if (controller.upvr_getkeydown(0, pvr_keycode.app) || input.getkeydown(keycode.q))
-        //{
-        //    loadmenu();
-        //}
     }
 
     public void LoadMenu()
@@ -177,12 +165,6 @@ public class VideoManager : MonoBehaviour
             stages[stageCounter].SetActive(true);
             stageCounter++;
         }
-        else
-        {
-            EmteqManager.SetDataPoint("Stopped data recording for cinema");
-            EmteqManager.StopRecordingData();
-            LoadMenu();
-        }
     }
 
     public void SetCanUserProgressToNextStageWithTriggerButton(bool canUserProgressToNextStageWithTriggerButton)
@@ -197,11 +179,83 @@ public class VideoManager : MonoBehaviour
         SetCanUserProgressToNextStageWithTriggerButton(true);
     }
 
-    public void SetupStudyVideos()
+    public void SetupStudyVideosOld()
     {
         categorySequenceArray = originalCategorySequenceArray.Shuffle().ToArray();
 
         EmteqManager.SetDataPoint("Category sequence array numbers: " + categorySequenceArray[0] + ", " + categorySequenceArray[1] + ", " + categorySequenceArray[2] + ", " + categorySequenceArray[2] + ", " + categorySequenceArray[3] + ", " + categorySequenceArray[4] + ", " + categorySequenceArray[5] + ", " + categorySequenceArray[6] + ", " + categorySequenceArray[7] + ", " + categorySequenceArray[8]);
+        EmteqManager.SetDataPoint("Category sequence: " + CategoryNumberToName(categorySequenceArray[0]) + "," +
+            " " + CategoryNumberToName(categorySequenceArray[1]) + ", " +
+            CategoryNumberToName(categorySequenceArray[2]) + ", " +
+            CategoryNumberToName(categorySequenceArray[3]) + ", " +
+            CategoryNumberToName(categorySequenceArray[4]) + ", " +
+            CategoryNumberToName(categorySequenceArray[5]) + ", " +
+            CategoryNumberToName(categorySequenceArray[6]) + ", " +
+            CategoryNumberToName(categorySequenceArray[7]) + ", " +
+            CategoryNumberToName(categorySequenceArray[8]));
+    }
+
+    //Returns true if two videos are of the same category (pos,neu,neg)
+    private bool CheckVideosCategoryOrder(int videoCategoryA, int videoCategoryB)
+    {
+        
+        if(positiveCategories.Contains(videoCategoryA) && positiveCategories.Contains(videoCategoryB))
+        {
+            return true;
+        }
+        else if (neutralCategories.Contains(videoCategoryA) && neutralCategories.Contains(videoCategoryB))
+        {
+            return true;
+        }
+        else if (negativeCategories.Contains(videoCategoryA) && negativeCategories.Contains(videoCategoryB))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+
+    }
+
+    public void SetupStudyVideos()
+    {
+        //categorySequenceArray = originalCategorySequenceArray.Shuffle().ToArray();
+        List<int> originalCategorySequenceList = originalCategorySequenceArray.ToList();
+        List<int> randomisedCategorySequenceList = new List<int>();
+
+        //Get first category by random
+        int startingCategory = UnityEngine.Random.Range(1, originalCategorySequenceList.Count);
+        randomisedCategorySequenceList.Add(startingCategory);
+        originalCategorySequenceList.Remove(startingCategory);
+
+        //Go through each category left
+        for (int i=0; i<=7;i++)
+        {
+            int rnd = UnityEngine.Random.Range(0, originalCategorySequenceList.Count);
+            while (CheckVideosCategoryOrder(randomisedCategorySequenceList[i], originalCategorySequenceList[rnd]))
+            {
+                rnd = UnityEngine.Random.Range(0, originalCategorySequenceList.Count);
+                //Loop ended up with last element that cannot be placed in new category, restart from beginning
+                if(i==7)
+                {
+                    //Reset values
+                    originalCategorySequenceList = originalCategorySequenceArray.ToList();
+                    randomisedCategorySequenceList = new List<int>();
+                    startingCategory = UnityEngine.Random.Range(1, originalCategorySequenceList.Count);
+                    randomisedCategorySequenceList.Add(startingCategory);
+                    originalCategorySequenceList.Remove(startingCategory);
+                    i = 0;
+                }
+            }
+            randomisedCategorySequenceList.Add(originalCategorySequenceList[rnd]);
+            originalCategorySequenceList.Remove(originalCategorySequenceList[rnd]);
+        }
+
+        //categorySequenceArray[0] = originalCategorySequenceArray.
+
+        categorySequenceArray = randomisedCategorySequenceList.ToArray();
+
+        EmteqManager.SetDataPoint("Category sequence array numbers: " + categorySequenceArray[0] + ", " + categorySequenceArray[1] + ", " + categorySequenceArray[2] + ", " + categorySequenceArray[3] + ", " + categorySequenceArray[4] + ", " + categorySequenceArray[5] + ", " + categorySequenceArray[6] + ", " + categorySequenceArray[7] + ", " + categorySequenceArray[8]);
         EmteqManager.SetDataPoint("Category sequence: " + CategoryNumberToName(categorySequenceArray[0]) + "," +
             " " + CategoryNumberToName(categorySequenceArray[1]) + ", " +
             CategoryNumberToName(categorySequenceArray[2]) + ", " +
@@ -355,7 +409,7 @@ public class VideoManager : MonoBehaviour
     IEnumerator VideoPlaying(int videoNumberInList)
     {
         yield return new WaitForSeconds(5);
-        Debug.Log("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
+        //Debug.Log("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
         EmteqManager.SetDataPoint("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
         yield return new WaitForSeconds(0.2f);
         if (_nextVideoClips.Count > 0)
@@ -370,7 +424,7 @@ public class VideoManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("Video category finished");
+            //Debug.Log("Video category finished");
             EmteqManager.SetDataPoint("Video category finished");
             PlayRestVideo();
         }
@@ -383,7 +437,7 @@ public class VideoManager : MonoBehaviour
         relaxationVideoRatingReminderText.SetActive(true);
         yield return new WaitForSeconds(10);
         relaxationVideoRatingReminderText.SetActive(false);
-        Debug.Log("Finished playing rest video");
+        //Debug.Log("Finished playing rest video");
         EmteqManager.SetDataPoint("Finished playing rest video");
         relaxationVideoText.SetActive(false);
         yield return new WaitForSeconds(0.2f);
