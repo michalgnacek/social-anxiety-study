@@ -19,7 +19,7 @@ public class VideoManager : MonoBehaviour
     public bool debugNextStageOnStart;
     public int debugStageCounter;
     public bool debugUseTestVideos;
-    private int restPeriodBetweenVideosInSeconds = 20;
+    private int restPeriodBetweenVideosInSeconds = 60;
     //private int restPeriodBetweenVideosInSeconds = 5;
 
     [SerializeField] private VideoPlayer _videoPlayer;
@@ -408,7 +408,7 @@ public class VideoManager : MonoBehaviour
 
     IEnumerator VideoPlaying(int videoNumberInList)
     {
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds((float)_nextVideoClips[videoNumberInList].length);
         //Debug.Log("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
         EmteqManager.SetDataPoint("Finished playing video number: " + _nextVideoClips[videoNumberInList].name);
         yield return new WaitForSeconds(0.2f);

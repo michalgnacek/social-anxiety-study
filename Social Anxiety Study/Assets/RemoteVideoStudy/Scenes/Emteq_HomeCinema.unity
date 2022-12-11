@@ -766,6 +766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   videoManagerScript: {fileID: 1721912211}
+  _videoPlayer: {fileID: 933413566}
 --- !u!114 &73364400
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8670,7 +8671,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1092107313
 Transform:
   m_ObjectHideFlags: 0
@@ -15284,32 +15285,53 @@ MonoBehaviour:
   _restVideoClip:
   - {fileID: 32900000, guid: 734d2f86f4a5ec548a9792ae720211ee, type: 3}
   _nonSocialNeutralVideoClipsList:
-  - {fileID: 32900000, guid: 1bb087ac07405a94c8d3e8dd2506b6c1, type: 3}
-  - {fileID: 32900000, guid: 9a503a58b03b17642a22bce5c65d26cc, type: 3}
+  - {fileID: 32900000, guid: 333a42022c639c047a2246501a083f02, type: 3}
+  - {fileID: 32900000, guid: 749967ca2bb512545813e285026918c5, type: 3}
+  - {fileID: 32900000, guid: 0380194e59258854da3e0a52cfb4ff24, type: 3}
+  - {fileID: 32900000, guid: 442c9cc52b63ad54e94a88d8643d2374, type: 3}
   _nonSocialPositiveVideoClipsList:
-  - {fileID: 32900000, guid: eb6024bf11a05184aa628acd27a40099, type: 3}
-  - {fileID: 32900000, guid: aef58c4b0544f004caebbd0a4e2c47d7, type: 3}
+  - {fileID: 32900000, guid: 9e4dbfd7069da5d478977758c5abd3ee, type: 3}
+  - {fileID: 32900000, guid: a2645134f22848149afbffcad01b35d6, type: 3}
+  - {fileID: 32900000, guid: f5707152516fdb244a6718d76a84dc20, type: 3}
+  - {fileID: 32900000, guid: 6ec7a81d12600fe48abcb05c3115fd7d, type: 3}
   _nonSocialNegativeVideoClipsList:
-  - {fileID: 32900000, guid: e4b90606c0ef15c41995ec170db881b8, type: 3}
-  - {fileID: 32900000, guid: 11fd2fd0f60d7614b9231008009cc6fc, type: 3}
+  - {fileID: 32900000, guid: 202f5f104f3760c4083994d33fcfd527, type: 3}
+  - {fileID: 32900000, guid: 2f21ca40b9c0aa84b99e872de16efb82, type: 3}
+  - {fileID: 32900000, guid: acd2240953910544da5b46e4aa183bc6, type: 3}
+  - {fileID: 32900000, guid: 77ed77f63f8ff524bb67d454c7a4df12, type: 3}
   _socialBUNeutralVideoClipsList:
-  - {fileID: 32900000, guid: 19b92dc3f7c4bc64891f41a8064a030b, type: 3}
-  - {fileID: 32900000, guid: 4a375790abe45ee48b0dcf1c2d5d224a, type: 3}
+  - {fileID: 32900000, guid: 359beef0c3e4a0a4eaa4042fb57e875a, type: 3}
+  - {fileID: 32900000, guid: 33083b157ba5b254292ae6b15f22d6f0, type: 3}
+  - {fileID: 32900000, guid: 91e920ab4a371064a91fcc49bd854b29, type: 3}
+  - {fileID: 32900000, guid: 43e560a17afa29640b2b34c3a2684b98, type: 3}
   _socialBUPositiveVideoClipsList:
-  - {fileID: 32900000, guid: 63956dd48ca7a7f4dbcceec86c42d74f, type: 3}
-  - {fileID: 32900000, guid: 3f40ff5c9d0f8294d96b72b14bc9adb4, type: 3}
+  - {fileID: 32900000, guid: f12db8d7ec531bd498a0525a26183d16, type: 3}
+  - {fileID: 32900000, guid: 3f98cc5ecf610d74996eb3bce2e8aac6, type: 3}
+  - {fileID: 32900000, guid: f3ce3224a7b155e418c3fe22f83e3edf, type: 3}
+  - {fileID: 32900000, guid: 0fa0a1f3bd034dd43b9564ade94310c3, type: 3}
   _socialBUNegativeVideoClipsList:
-  - {fileID: 32900000, guid: 03f71cd9c1a719e4297056389dedc33c, type: 3}
-  - {fileID: 32900000, guid: 324c2f38a29135247be982b233b44b44, type: 3}
+  - {fileID: 32900000, guid: e90519bce1268164fbf0afd52ecac4fd, type: 3}
+  - {fileID: 32900000, guid: 63b741fd65063d648ab9c563778b6c43, type: 3}
+  - {fileID: 32900000, guid: c3e7dfa249c4ab54d9d60a5d767c186e, type: 3}
+  - {fileID: 32900000, guid: 08ae843b391c7204c8bce05de332a3b2, type: 3}
   _socialNeutralVideoClipsList:
-  - {fileID: 32900000, guid: c1b231ed1c75cd447b366e865db6ea9a, type: 3}
-  - {fileID: 32900000, guid: bf8d24e17f0743a40a2a199d1e7cc475, type: 3}
+  - {fileID: 32900000, guid: 276e7e03e439e0841a43302b8beaf837, type: 3}
+  - {fileID: 32900000, guid: 875a83c95efc7364aac6979dfcf46aa4, type: 3}
+  - {fileID: 32900000, guid: 529b43621712f92418d8e826336191a2, type: 3}
+  - {fileID: 32900000, guid: a0f6676725e7b9d48998c99c13fc0515, type: 3}
+  - {fileID: 32900000, guid: c591cac962f3f5c40bbb273e5e75f99f, type: 3}
   _socialPositiveVideoClipsList:
-  - {fileID: 32900000, guid: 3bc5d9f1ff509904f8eb1ae54177c9b0, type: 3}
-  - {fileID: 32900000, guid: 5a30da98c3bd2cd4386431a1b7c10f60, type: 3}
+  - {fileID: 32900000, guid: 41aef1430e3486e46aa82ba3495eb0d1, type: 3}
+  - {fileID: 32900000, guid: 6cc94934f4be0024fbacf7a2757684d7, type: 3}
+  - {fileID: 32900000, guid: 4f1ada697ebe4ff41b3fa50c5bbd6929, type: 3}
+  - {fileID: 32900000, guid: eaff477e44495ad409765dbd4df41a02, type: 3}
+  - {fileID: 32900000, guid: b31d174aca62182458f9dd1c125b8113, type: 3}
   _socialNegativeVideoClipsList:
-  - {fileID: 32900000, guid: a3b745aa0541a09479e7c5bf90385be1, type: 3}
-  - {fileID: 32900000, guid: c16b6ea15b079b44c8a2742fe25bb34d, type: 3}
+  - {fileID: 32900000, guid: 5fbc8a0b99c15a042a4fe6cb80322bc5, type: 3}
+  - {fileID: 32900000, guid: b91f746a4f94c66448f1365995f590ce, type: 3}
+  - {fileID: 32900000, guid: 58f5fa397ff9b3b408a55059186b5501, type: 3}
+  - {fileID: 32900000, guid: 20817eaccfc544444a6c45ad4259292e, type: 3}
+  - {fileID: 32900000, guid: 6087501d14aa1174588ac330bf0e35a9, type: 3}
   _testneutralVideoClipsList:
   - {fileID: 32900000, guid: e9bafc183cd790e45a3ff1918974bebe, type: 3}
   - {fileID: 32900000, guid: b65b8b1440eb5c444ae429492461c165, type: 3}
@@ -17099,7 +17121,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7222166073713131462, guid: c15ab9ae1df24c14e831dbafee1675fa, type: 3}
       propertyPath: BaselineTimeInSeconds
-      value: 5
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 7337748729804766158, guid: c15ab9ae1df24c14e831dbafee1675fa, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
