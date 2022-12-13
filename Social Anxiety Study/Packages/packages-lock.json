@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "com.emteqlabs.emteqsdk": {
-      "version": "file:E:/OneDrive - Emteq/unity-sdks/emteq-sdk-unity-2.0.0-exp.6/emteq-sdk-unity-2.0.0-exp.6",
+      "version": "file:E:/OneDrive - Emteq/unity-sdks/emteq-sdk-unity-2.0.0-exp.8/emteq-sdk-unity-2.0.0-exp.8",
       "depth": 0,
       "source": "local",
       "dependencies": {

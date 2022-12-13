@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "com.emteqlabs.emteqsdk": "file:E:/OneDrive - Emteq/unity-sdks/emteq-sdk-unity-2.0.0-exp.6/emteq-sdk-unity-2.0.0-exp.6",
+    "com.emteqlabs.emteqsdk": "file:E:/OneDrive - Emteq/unity-sdks/emteq-sdk-unity-2.0.0-exp.8/emteq-sdk-unity-2.0.0-exp.8",
     "com.unity.collab-proxy": "1.17.1",
     "com.unity.feature.development": "1.0.1",
     "com.unity.ide.rider": "3.0.15",
