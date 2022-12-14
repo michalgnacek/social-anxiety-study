@@ -406,7 +406,7 @@ public class VideoManager : MonoBehaviour
 
     public void PlayRestVideo()
     {
-        relaxCounterText.text = (categoryCounter+1) + " out of 9";
+        relaxCounterText.text = (categoryCounter+1) + " out of 10";
         StartCoroutine(PlayRestVideoWithDelay());
     }
 
