@@ -9,6 +9,7 @@ using EmteqLabs;
 using EmteqLabs.Video;
 using EmteqLabs.Models;
 using UnityEngine.XR.Interaction.Toolkit;
+using TMPro;
 
 public class VideoManager : MonoBehaviour
 {
@@ -61,6 +62,8 @@ public class VideoManager : MonoBehaviour
     public GameObject welcomeGameObject;
     public GameObject welcomeText;
 
+    public TextMeshProUGUI relaxCounterText;
+
     public GameObject calibrationGameObject;
     [SerializeField] private CustomCalibration _customCalibration;
 
@@ -92,7 +95,7 @@ public class VideoManager : MonoBehaviour
     void Start()
     {
         heldControllers = new List<UnityEngine.XR.InputDevice>();
-        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Controller;
+        desiredCharacteristics = UnityEngine.XR.InputDeviceCharacteristics.HeldInHand | UnityEngine.XR.InputDeviceCharacteristics.Right | UnityEngine.XR.InputDeviceCharacteristics.Controller;
         UnityEngine.XR.InputDevices.GetDevicesWithCharacteristics(desiredCharacteristics, heldControllers);
         desiredController = heldControllers[0];
 
@@ -403,6 +406,7 @@ public class VideoManager : MonoBehaviour
 
     public void PlayRestVideo()
     {
+        relaxCounterText.text = (categoryCounter+1) + " out of 9";
         StartCoroutine(PlayRestVideoWithDelay());
     }
 
